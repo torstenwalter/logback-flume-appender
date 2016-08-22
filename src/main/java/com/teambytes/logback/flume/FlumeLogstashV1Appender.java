@@ -41,6 +41,8 @@ public class FlumeLogstashV1Appender extends UnsynchronizedAppenderBase<ILogging
 
   private String type;
 
+  private boolean includeMessageInHeader = true;
+
   public void setType(String type) {
     this.type = type;
   }
@@ -100,6 +102,10 @@ public class FlumeLogstashV1Appender extends UnsynchronizedAppenderBase<ILogging
     } catch (NumberFormatException nfe) {
       addWarn("Cannot set the reporterMaxQueueSize to " + reporterMaxQueueSizeStr, nfe);
     }
+  }
+
+  public void setIncludeMessageInHeader(boolean includeMessageInHeader) {
+    this.includeMessageInHeader = includeMessageInHeader;
   }
 
   @Override
